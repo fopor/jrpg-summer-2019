@@ -8,6 +8,8 @@ function love.load()
 
   DEBUG = false
 
+  math.randomseed(os.time())
+
   -- Carrega fontes de texto usadas no jogo
   local font_loader = require 'graphics.font_loader'
   font_loader:load("regular", "assets/fonts/VT323-Regular.ttf")
