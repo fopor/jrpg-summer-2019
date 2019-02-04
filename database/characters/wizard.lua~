@@ -1,0 +1,11 @@
+
+local wizard = new 'database.characters.character' {
+    maxHP=200,
+    hpAtual=200,
+    sprite = 'wizard-face',
+    name='wizard',
+
+}
+
+return wizard
+    

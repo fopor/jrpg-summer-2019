@@ -1,0 +1,6 @@
+
+return {
+  --'slime', 'slime'
+    new 'database.characters.slime'{},
+}
+

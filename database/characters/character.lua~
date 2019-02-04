@@ -1,0 +1,13 @@
+local Character = new (Object) {
+   maxHp=1,
+   hpAtual=1,
+   avatar=nil,
+      
+}       
+
+function Character:init() 
+    self.hpAtual = self.maxHp
+end
+
+return Character
+
