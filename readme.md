@@ -19,3 +19,5 @@
 * Barra de energia: há uma barra de energia, assim como a barra de vida. O tamanho da barra é determinado pela fração que a energia atual representa da total.
 
 * Turno dos Monstros: cada slime tem seu turno para atacar
+
+* Pontos extras: adicionamos 2 monstros :)
