@@ -5,7 +5,10 @@ local slime = new 'database.characters.character' {
     sprite = 'slime',
     name='slime',
     atkFis=50,
-
+    speed = 50,
+    action_cd = 0,
+    energy = 100,
+    maxEnergy = 100,
 }
 
 return slime

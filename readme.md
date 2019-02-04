@@ -17,3 +17,5 @@
 * Energia: o tipo Character possui o atributo 'energia', todo personagem começa com a energia atual igual à máxima e esta é determinada no banco de dados.
 
 * Barra de energia: há uma barra de energia, assim como a barra de vida. O tamanho da barra é determinado pela fração que a energia atual representa da total.
+
+* Turno dos Monstros: cada slime tem seu turno para atacar

@@ -37,7 +37,6 @@ function Battle:loadParty(side, name)
     
     party.characters[i].avatar = new_avatar
     
-    
     self.graphics:add('entities', party.characters[i].avatar)
   end
   
@@ -48,17 +47,25 @@ function Battle:updateBar()
   local sides = {'left', 'right'}
 
   for _, side in ipairs(sides) do
+    local removed = {}
+
     for i, char in ipairs(self[side].characters) do
       char:updateInfo()
-      print (char:estouVivo())
       if char:estouVivo()==false then
         char.avatar.sprite.visible = false
         char.avatar.lifebar.visible = false
-        table.remove(self[side].characters,1)
+        print('removing ' .. char.name)
+        removed[i] = true
+      end
+    end
+
+    for i=#self[side].characters,1,-1 do
+      if removed[i] then
+        self[side].characters[i].avatar:hideCursor()
+        table.remove(self[side].characters, i)
       end
     end
   end
-
 end
   
 function Battle:onResume()
@@ -66,14 +73,34 @@ function Battle:onResume()
     self.stack:push('execute_action', self, self.next_action)
     self.next_action = nil
   else
-    self:currentCharacter().avatar:hideCursor()
-    self.current_char = self.current_char % #self.right.characters + 1
+    if self:currentCharacter() ~= nil then
+      self:currentCharacter().avatar:hideCursor()
+    end
+    
+    self.current_char = self.current_char + 1;
+
+    if self.current_char > #self[self.current_party].characters then
+      self.current_char = 1
+
+      if self.current_party == 'right' then 
+        self.current_party = 'left' 
+      else 
+        self.current_party = 'right' 
+      end
+      
+    end
+    print('current char = ' .. self.current_char)
+
   end
 end
 
 function Battle:onUpdate(dt)
-  self:currentCharacter().avatar:showCursor()
-  self.stack:push('choose_action', self)
+  if(self.current_party == 'right') then
+    self:currentCharacter().avatar:showCursor()
+    self.stack:push('choose_action', self)
+  else
+    self.stack:push('ai_action', self)
+  end
 end
 
 function Battle:currentCharacter()
@@ -89,4 +116,3 @@ function Battle:setNextAction(name, params)
 end
 
 return Battle
-

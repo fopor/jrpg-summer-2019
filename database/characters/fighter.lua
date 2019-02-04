@@ -4,6 +4,10 @@ local fighter = new 'database.characters.character' {
     sprite = 'brutal-helm',
     name='fighter',
     atkFis=20,
+    speed = 100,
+    action_cd = 0,
+    energy = 10,
+    maxEnergy = 10,
 
 }
 

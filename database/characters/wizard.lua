@@ -4,7 +4,11 @@ local wizard = new 'database.characters.character' {
     hpAtual=200,
     sprite = 'wizard-face',
     name='wizard',
-    atkFis=25,
+    atkFis= 35,
+    speed = 1,
+    action_cd = 0,
+    energy = 500,
+    maxEnergy = 500,
 
 }
 

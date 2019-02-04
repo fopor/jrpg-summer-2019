@@ -27,9 +27,6 @@ function ChooseTarget:choose(i)
   local alvo     = self.targets.chosen
   local dano = atacante:darDano(alvo)
   self.battle.danoDado = dano
-
-  
-
   self.stack:pop()
 end
 
